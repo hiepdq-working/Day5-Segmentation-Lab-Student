@@ -27,6 +27,24 @@ Ghi tên ZIP đúng như file trong `submissions/` và số ảnh đã vẽ, Sav
 
 Nếu export lỗi, ghi task, dữ liệu đã Save đến đâu và lỗi đã báo coach.
 
+### Kết quả chạy notebook tự kiểm (18/09/2026)
+
+Chạy toàn bộ `notebooks/day5-segmentation-tu-kiem.ipynb` (BƯỚC 0–7) với Python 3.12 trên 9 ZIP hiện có trong `submissions/`. Notebook chỉ kiểm định dạng/tên file/số mask, **không** chứng minh mask vẽ đúng.
+
+| Task | Trạng thái QC | Ghi chú từ notebook |
+| --- | --- | --- |
+| easy_semantic | OK | 3 ảnh mask: 7ee6d192-89e2408b, 817bca71-00000000, 81ae7cbb-6bc63a4a |
+| medium_instance | OK | 72 annotation (polygon), đủ 3 ảnh |
+| hard_panoptic | OK | 46 mask (45 polygon + 1 RLE), đủ 2 ảnh, 12 class |
+| cp1_holes | OK | 8 annotation (polygon) |
+| cp2_slice | OK | 22 annotation (polygon) |
+| cp5_occlusion | OK | 43 annotation (polygon) |
+| cp3_thin | OK | 1 ảnh mask: 839f7736-abe28069 |
+| cp4_curb | OK | 1 ảnh mask: 7d83710e-4697c3b2 |
+| cp6_coverage | OK | 1 ảnh mask: 7daa6479-67988f3f |
+
+Tổng kết từ ô `inspect_all` (BƯỚC 07): **Lỗi hợp đồng: 0 · task chưa có ZIP: 0 · ZIP tên lạ: []**. Cả 9/9 task đều xuất đúng định dạng (Segmentation mask 1.1 cho semantic, COCO 1.0 cho instance/panoptic) và đúng số ảnh yêu cầu.
+
 ## 2. Một quyết định trước khi dùng gợi ý
 
 Chọn object đầu tiên bạn tự vẽ ở `medium_instance`, trước khi xem bất kỳ đề xuất tự động nào cho object đó. Ghi ảnh/vị trí đủ để tìm lại; “quy tắc biên” là lý do bạn chọn hoặc dừng mask ở ranh đó.
@@ -46,7 +64,7 @@ Chọn một lỗi **có thật** trong bài. Nếu công cụ lỗi khiến b�
 - Quy tắc và hành động sửa: …
 - Sau sửa đã Save và export lại chưa? …
 
-Nếu bạn **đã xem Summary tự đánh giá trên GitHub Actions hoặc tự chạy script**, ghi ngắn một kết quả liên quan lỗi vừa sửa (ví dụ task, metric trước/sau nếu có): … / chưa có điểm. Scorecard ba tier tối đa **82**, không phải điểm cuối trên 100. Không tự ghi PASS/top 3/bonus; người phụ trách xác nhận theo tiêu chí lớp. Không đưa file ground truth vào fork.
+Nếu bạn **đã xem Summary tự đánh giá trên GitHub Actions hoặc tự chạy script**, ghi ngắn một kết quả liên quan lỗi vừa sửa (ví dụ task, metric trước/sau nếu có): Đã chạy notebook tự kiểm cục bộ ngày 18/09/2026 — cả 9/9 task báo `OK`, không có lỗi hợp đồng ZIP hay tên file lạ (xem bảng ở mục 1). Notebook chỉ kiểm định dạng, không có metric IoU/PQ nên chưa có điểm. Scorecard ba tier tối đa **82**, không phải điểm cuối trên 100. Không tự ghi PASS/top 3/bonus; người phụ trách xác nhận theo tiêu chí lớp. Không đưa file ground truth vào fork.
 
 ## 4. Ba ca chưa chắc hoặc đã cân nhắc
 
