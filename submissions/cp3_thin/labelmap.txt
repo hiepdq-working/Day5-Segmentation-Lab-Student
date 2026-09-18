@@ -1,0 +1,6 @@
+# label:color_rgb:parts:actions
+background:0,0,0::
+pole:153,153,153::
+traffic sign:220,220,0::
+sky:70,130,180::
+road:128,64,128::
